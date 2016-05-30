@@ -1,3 +1,2 @@
 Possible upgrades:
-+ Most popular word (after filtering stopwords)
-+ Replace words
++ Fix/Gussy up the design to reduce clutter
