@@ -1,2 +1,0 @@
-Possible upgrades:
-+ Fix/Gussy up the design to reduce clutter
