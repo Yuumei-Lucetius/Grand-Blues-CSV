@@ -1,7 +1,2 @@
-# Count
-A simple web application that displays very basic information about inserted text, with some filtering options available.
-
-Functions:
-* Counts the number of characters and words.
-* Replaces words with user input, with options to include and exclude embedded matches.
-* Displays the most frequently used word (there needs to be more than one word present), with options to filter basic <a href="https://en.wikipedia.org/wiki/Stop_words">stopwords</a> (i.e. a, the, of) and more complex stopwords (i.e. above, behind, meanwhile).
+# Grand Blues Comic Strip Viewer
+A web application allowing the viewing of comic strips originating from Cygames' mobage, Granblue Fantasy's, inhouse comic series: Grand Blues. The landing point is the first strip of the series, where strips can be switched between using the left and right arrow buttons (as well as the arrows displayed on the page). The menu modal displays which comic strip the user is currently viewing, and allows the selection of a custom numbered strip.
