@@ -1,14 +1,16 @@
 var comicPos = 1;
+var lastPos = 1;
 
 //Load page according to its number
 function load_comic() {
 	$("#comic").empty();
-	$("#comic").append("<img id='gbstrip' style='-webkit-user-select: none; max-width: 100%;' src='http://gbf.game-a1.mbga.jp/assets_en/img/sp/assets/comic/episode/episode_" + comicPos + ".jpg' onerror='holdthepresses();'></img>");
+	$("#comic").append("<img id='gbstrip' style='-webkit-user-select: none; max-width: 100%;' src='http://gbf.game-a1.mbga.jp/assets_en/img/sp/assets/comic/episode/episode_" + comicPos + ".jpg' onerror='fallback()'></img>");
 }
 
 //Load previous page
 function comic_back() {
 	if (comicPos > 1) {
+		lastPos = comicPos;
 		comicPos -= 1;
 		load_comic();
 		if (comicPos == 1 && !$("#prev").hasClass("disabled")) {
@@ -19,6 +21,7 @@ function comic_back() {
 
 //Load next page
 function comic_next() {
+	lastPos = comicPos;
 	comicPos += 1;
 	load_comic();
 	if (comicPos > 1 && $("#prev").hasClass("disabled")) {
@@ -102,18 +105,16 @@ function holdthepresses() {
 	$(viewer_menu).modal();
 }
 
-//Checks if the strip# exists
-function check_exists() {
-	if ($('#gbstrip').error()) {
-		alert('l');
-	} else {
-		return 0;
-	}
+//Loads the previously-viewed strip if a non-existing strip is requested by the user
+function fallback() {
+	comicPos = lastPos;
+	load_comic();
 }
 
 //Loads the user-specified strip
 function custom_load() {
-	if ($.isNumeric($("#stripNo").val()) && check_exists() == 0) {
+	if ($.isNumeric($("#stripNo").val())) {
+		lastPos = comicPos;
 		comicPos = parseInt($("#stripNo").val());
 		load_comic();
 		$(".modal").modal("hide");
